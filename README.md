@@ -1,6 +1,6 @@
-# World Game Library
+# World Game Library V2
 
-Learn asycnronous C programming by a game.
+Learn asynchronous C programming by a game.
 
 The library implements a game loop for a character-based ncurses game;
 
@@ -13,6 +13,19 @@ The library finds out the event types:
 
 It can print colors and arbitrary characters on the screen. 
 Running is interrupted when character is drawn out of the screen.
+
+## Preview
+
+![World Preview](world_preview.png)
+
+## Changes in V2
+
+- changed the names of variables for better clarity
+- visual changes
+- added array for game map
+- added constants for game offsets and map dimensions
+- added functions to print various game elements
+- added function to clear only the active game area
 
 ## Installation and Running
 
@@ -75,4 +88,5 @@ The `int game_event(struct event* event,void* game)`
 1. Examine the pressed key from event pointer. If the `key` variable is non-zero, a key was pressed. According to the pressed key, modify the game state `game`.
 1. Draw the game state. In the beginning of the step function the screen is empty.
 1. Returning non-zero value ends the game loop. 
+
 
