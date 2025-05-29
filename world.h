@@ -3,11 +3,13 @@
 
 #include <curses.h>
 
+#define COLOR_COUNT 8
+
 /**
  * World represented as a rectangular matrix of colorful characters.
- * 
+ *
  * Point [0,0] is displayed the upper left corner of the screen.
- * 
+ *
  */
 
 enum event_type {
@@ -67,12 +69,12 @@ struct event {
 
 /**
  * Sets cell to a state.
- * @param event 
+ * @param event
  * @param x coordinate of cell
  * @param y coordinate of cell
  * @param new state of the cell
  */
-void set_cell(int character,int x,int y);
+void set_cell(const int character, const int x, const int y);
 
 /**
  * COLOR_BLACK   0
@@ -84,11 +86,7 @@ void set_cell(int character,int x,int y);
  * COLOR_CYAN    6
  * COLOR_WHITE   7
  */
-
-#define COLOR_COUNT 8
-
-void set_color_cell(int character,int x,int y,short front_color,short back_color);
-
+void set_color_cell(const int character, const int x, const int y, const short front_color, const short back_color);
 
 /**
  *
@@ -102,12 +100,10 @@ void set_color_cell(int character,int x,int y,short front_color,short back_color
  * Free user state.
  * @param event
  */
+int start_world(void* (*init_game)(),int (*world_event)(struct event* event,void* game), void (*destroy_game)(void* game));
 
-int start_world(void* (*init_game)(),int (*world_event)(struct event* event,void* game),void (*destroy_game)(void* game));
-
-void game_speed(int value);
-
-void set_message(const char* message,int x,int y);
+void game_speed(const int value);
+void set_message(const char* message, const int x, const int y);
 void clear_screen();
 
 #endif
